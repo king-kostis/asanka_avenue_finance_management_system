@@ -1,0 +1,59 @@
+<!Doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
+        <title>Asanka Avenue Management system</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 flex h-screen overflow-hidden font-sans">
+        <aside class="w-64 bg-black text-white flex flex-col hidden md:flex shrink-0">
+            <div class="p-8 text-center border-b border-gray-800">
+                <h1 class="text-2xl font-black italic tracking-tighter">ASANKA <span class="text-red-600">AVENUE</span></h1>
+            </div>
+            <nav class="flex-1 px-4 py-8 space-y-4">
+                <a th:href="@{/dashboard}" class="flex items-center hover:cursor-pointer space-x-3 px-4 py-3 bg-red-600 rounded-lg shadow-lg"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+                <a th:href="@{/sales}" class="flex items-center hover:cursor-pointer space-x-3 px-4 py-3 text-gray-400 hover:text-white transition"><i class="fas fa-receipt"></i><span>Sales</span></a>
+                <a th:href="@{/expenses}" class="flex items-center hover:cursor-pointer space-x-3 px-4 py-3 text-gray-400 hover:text-white transition"><i class="fas fa-credit-card"></i><span>Expenses</span></a>
+                <a th:href="@{/inventory}" class="flex items-center hover:cursor-pointer space-x-3 px-4 py-3 text-gray-400 hover:text-white transition"><i class="fas fa-boxes"></i><span>Inventory</span></a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 flex flex-col overflow-y-auto">
+            <header class="bg-white px-8 py-4 border-b flex justify-between items-center shadow-sm">
+                <h2 class="text-xl font-bold text-gray-800 uppercase">Dashboard Overview</h2>
+            </header>
+
+            <div class="p-8 space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-sm border-t-8 border-red-600 p-6">
+                        <h3 class="text-lg font-bold mb-4">Total Sales</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between border-b pb-1"><span>Day</span><span th:text="totalDailySales" class="font-bold"></span></div>
+                            <div class="flex justify-between border-b pb-1"><span>Month</span><span th:text="totalMonthlySales" class="font-bold"></span></div>
+                            <div class="flex justify-between text-red-600 font-black text-xl pt-2"><span>Year</span><span th:text="totalYearlySales"></span></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border-t-8 border-black p-6">
+                        <h3 class="text-lg font-bold mb-4">Total Expenses</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between border-b pb-1"><span>Day</span><span class="font-bold">₵0.00</span></div>
+                            <div class="flex justify-between border-b pb-1"><span>Month</span><span class="font-bold">₵0.00</span></div>
+                            <div class="flex justify-between text-black font-black text-xl pt-2"><span>Year</span><span>₵0.00</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border-t-8 border-red-600 p-6">
+                        <h3 class="text-lg font-bold mb-4">Inventory Value</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between border-b pb-1"><span>Day</span><span class="font-bold">₵0.00</span></div>
+                            <div class="flex justify-between border-b pb-1"><span>Month</span><span class="font-bold">₵0.00</span></div>
+                            <div class="flex justify-between text-red-600 font-black text-xl pt-2"><span>Year</span><span>₵0.00</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
