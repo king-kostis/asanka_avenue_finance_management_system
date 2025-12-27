@@ -46,10 +46,19 @@ public class HomeController {
         return "sales.html";
     }
 
+    //Add sales record
     @PostMapping("/sales")
     public String addSales(@ModelAttribute("sale") Sales sale){
         salesService.addSale(sale);
-        return "sales.html";
+        return "redirect:/sales";
+    }
+
+    //Delete sales record by id
+    @PostMapping("/sales/delete/{id}")
+    public String deleteSales(Model model, @PathVariable int id){
+        expenseService.delete(id);
+        model.addAttribute("sale", new Sales()); // for binding object to delete button
+        return "redirect:/sales";
     }
 
     @GetMapping("/expenses")
@@ -59,11 +68,14 @@ public class HomeController {
         return "expenses.html";
     }
 
+    //Add expense record
     @PostMapping("/expenses")
     public String addSales(@ModelAttribute("expense") Expenses expense){
         expenseService.add(expense);
         return "redirect:/expenses";
     }
+
+    //Delete expense record by id
     @PostMapping("/expenses/delete/{id}")
     public String deleteExpense(Model model, @PathVariable int id){
         expenseService.delete(id);
@@ -81,12 +93,13 @@ public class HomeController {
     @PostMapping("/inventory")
     public String addInventory(@ModelAttribute("stock") Stocks stock){
         stockService.add(stock);
-        return "inventory.html";
+        return "redirect:/inventory";
     }
 
     @PostMapping("/inventory/delete/{id}")
-    public String deleteInventory(@PathVariable int id){
+    public String deleteInventory(Model model, @PathVariable int id){
         stockService.delete(id);
-        return "inventory.html";
+        model.addAttribute("stock", new Stocks());
+        return "redirect:/inventory";
     }
 }

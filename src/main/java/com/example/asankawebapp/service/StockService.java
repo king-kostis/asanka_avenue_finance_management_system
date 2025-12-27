@@ -33,11 +33,13 @@ public class StockService {
         stocksRepository.deleteById(stockId);
     }
 
+    //Calculate total stocks for the day
     public double totalDaily(){
         double total = 0;
         for(int i = 0; i < getAll().size(); i++){
-            LocalDate stockDate = getAll().get(i).getStockDate();
+            LocalDate stockDate = getAll().get(i).getStockDate(); //Get date stocked from list
 
+            //Checks if date is current date to validate for calculation
             if(currentDate.equals(stockDate)) {
                 int amount = getAll().get(i).getQuantity();
                 total += amount;
@@ -45,6 +47,7 @@ public class StockService {
         }
         return total;
     }
+
 
     public double totalMonthly(){
         double total = 0;

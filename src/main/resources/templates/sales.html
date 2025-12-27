@@ -67,7 +67,10 @@
                                 <td class="p-4" th:text="${sale.itemName}"></td>
                                 <td class="p-4 font-bold" th:text="${sale.price}"></td>
                                 <td class="p-4 text-right">
-                                    <button class="text-red-600 hover:bg-red-50 px-3 py-1 rounded">Delete</button>
+                                    <form th:action="@{/sales/delete/{id}(id=${sale.id})}" th:object="${sale}" method="post">
+                                        <input th:field="*{id}" type="hidden">
+                                        <button type="submit" class="text-red-600">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

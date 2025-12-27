@@ -58,12 +58,15 @@
             <thead class="bg-gray-50 text-xs font-bold uppercase">
               <tr>
                 <th class="p-4">Category</th>
-                <th class="p-4">Cost</th><th class="p-4 text-right">Actions</th>
+                <th class="p-4">Date</th>
+                <th class="p-4">Cost</th>
+                <th class="p-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody th:each="expense : ${expenses}" class="divide-y divide-gray-100">
               <tr>
                 <td th:text="${expense.description}" class="p-4"></td>
+                <td class="p-4" th:text="${expense.expenseDate}"></td>
                 <td th:text="${expense.cost}" class="p-4 font-bold"></td>
                 <td class="p-4 text-right">
                   <form th:action="@{/expenses/delete/{id}(id=${expense.id})}" th:object="${expense}" method="post">

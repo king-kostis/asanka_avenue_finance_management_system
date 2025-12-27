@@ -52,9 +52,10 @@
               <td th:text="${stock.productName}" class="p-4"></td>
               <td th:text="${stock.quantity}" class="p-4"></td>
               <td class="p-4 text-right">
-                <a  th:href="@{}">
-                  <button class="text-red-600">Remove</button>
-                </a>
+                <form th:action="@{/inventory/delete/{id}(id=${stock.id})}" th:object="${stock}" method="post">
+                  <input th:field="*{id}" type="hidden">
+                  <button type="submit" class="text-red-600">Delete</button>
+                </form>
               </td>
             </tr>
             </tbody>
