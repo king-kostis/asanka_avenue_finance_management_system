@@ -11,14 +11,14 @@ public class Sales {
     private LocalDate dateOfSale;
     private double price;
 
-    Sales(int id, String itemName, LocalDate dateOfSale, double price){
+    public Sales(int id, String itemName, LocalDate dateOfSale, double price){
         this.id = id;
         this.itemName = itemName;
         this.dateOfSale = dateOfSale;
         this.price = price;
     }
 
-    Sales() {}
+    public Sales() {}
 
     public int getId(){
         return id;
