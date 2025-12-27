@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-    private SalesService salesService;
-    private ExpenseService expenseService;
-    private StockService stockService;
+    private final SalesService salesService;
+    private final ExpenseService expenseService;
+    private final StockService stockService;
 
     HomeController(SalesService salesService, ExpenseService expenseService, StockService stockService){
         this.salesService = salesService;
@@ -33,9 +33,8 @@ public class HomeController {
         model.addAttribute("totalMonthlyExpenses", expenseService.totalMonthly());
         model.addAttribute("totalYearlyExpenses", expenseService.totalYearly());
 
-        model.addAttribute("totalDailyStocks", stockService.totalDaily());
-        model.addAttribute("totalMonthlyStocks", stockService.totalMonthly());
-        model.addAttribute("totalYearlyStocks", stockService.totalYearly());
+        model.addAttribute("profit", calculateProfit());
+        model.addAttribute("loss", calculateLoss());
         return "index.html";
     }
 
@@ -101,5 +100,19 @@ public class HomeController {
         stockService.delete(id);
         model.addAttribute("stock", new Stocks());
         return "redirect:/inventory";
+    }
+
+    public double calculateProfit() {
+        if (salesService.totalDaily() < expenseService.totalDaily()){
+            return 0.0;
+        }
+        return salesService.totalDaily() - expenseService.totalDaily();
+    }
+
+    public double calculateLoss(){
+        if (salesService.totalDaily() > expenseService.totalDaily()){
+            return 0.0;
+        }
+        return expenseService.totalDaily() - salesService.totalDaily();
     }
 }

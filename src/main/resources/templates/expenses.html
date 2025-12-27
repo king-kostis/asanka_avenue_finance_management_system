@@ -39,7 +39,7 @@
       </header>
 
       <div class="p-8 flex flex-col lg:flex-row gap-8">
-        <div class="w-fit lg:w-1/3 bg-black text-white p-6 rounded-xl shadow-sm">
+        <div class="w-full h-fit lg:w-1/3 bg-black text-white p-6 rounded-xl shadow-sm">
           <h3 class="font-bold text-lg mb-4 text-red-500">Log Expense</h3>
           <form th:object="${expense}" th:action="@{/expenses}" method="post" class="space-y-4">
             <div>
@@ -48,7 +48,8 @@
             </div>
             <div>
               <label for="cost" class="block text-xs font-bold text-gray-400 uppercase">Cost (₵)</label>
-              <input id="cost" th:field="*{cost}" type="number" step="0.01" min="0" class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white"></div>
+              <input id="cost" th:field="*{cost}" type="number" step="0.01" min="0" class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white">
+            </div>
             <button type="submit" class="w-full bg-red-600 text-white py-2 rounded font-bold hover:bg-white hover:text-black transition">Add Expense</button>
           </form>
         </div>
@@ -63,7 +64,7 @@
                 <th class="p-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody th:each="expense : ${expenses}" class="divide-y divide-gray-100">
+            <tbody th:each="expense : ${expenses}" class="border-t">
               <tr>
                 <td th:text="${expense.description}" class="p-4"></td>
                 <td class="p-4" th:text="${expense.expenseDate}"></td>

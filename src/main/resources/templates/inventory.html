@@ -27,7 +27,7 @@
       </header>
 
       <div class="p-8 flex flex-col lg:flex-row gap-8">
-        <div class="w-full lg:w-1/3 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+        <div class="w-full h-fit lg:w-1/3 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <h3 class="font-bold text-lg mb-4">Stock Intake</h3>
           <form th:action="@{/inventory}" th:object="${stock}" method="post" class="space-y-4">
             <div>
@@ -47,7 +47,7 @@
                 <th class="p-4">Item</th><th class="p-4">Quantity In Stock</th><th class="p-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody th:each="stock : ${stocks}" class="divide-y">
+            <tbody th:each="stock : ${stocks}" class="border-t">
             <tr>
               <td th:text="${stock.productName}" class="p-4"></td>
               <td th:text="${stock.quantity}" class="p-4"></td>

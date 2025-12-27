@@ -75,6 +75,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="bg-white w-72 mx-auto rounded-xl shadow-sm border-t-8 border-black p-6">
+                    <h3 class="text-lg text-center font-bold mb-4">Profit/Loss for the day</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b pb-1">
+                            <span>Profit</span>
+                            <span th:text="${profit}" class="font-bold"></span>
+                        </div>
+                        <div class="flex justify-between pb-1">
+                            <span>Loss</span>
+                            <span th:text="${loss}" class="font-bold"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </body>
