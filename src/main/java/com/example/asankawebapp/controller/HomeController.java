@@ -102,17 +102,18 @@ public class HomeController {
         return "redirect:/inventory";
     }
 
-    private double calculateProfit() {
+    private static double calculateProfit() {
         if (salesService.totalDaily() < expenseService.totalDaily()){
             return 0.0;
         }
         return salesService.totalDaily() - expenseService.totalDaily();
     }
 
-    private double calculateLoss(){
+    private static double calculateLoss(){
         if (salesService.totalDaily() > expenseService.totalDaily()){
             return 0.0;
         }
         return expenseService.totalDaily() - salesService.totalDaily();
     }
 }
+
